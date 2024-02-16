@@ -1,13 +1,15 @@
-In Jap en Jinneke taal…
+# In Jap en Jinneke taal…
+
 Met een BSN kan de identiteit van een persoon makkelijk herleid worden.
 Als een partij het BSN mag gebruiken, moeten ze dat zo min mogelijk doen. Dus zoveel mogelijk gebruik maken van pseudoniemen.
 Als twee partijen die beide het BSN mogen gebruiken, gegevens over dezelfde persoon willen delen, kan dat als ze hetzelfde pseudoniem gebruiken. Dat willen we niet, want met een vast pseudoniem per BSN is het pseudoniem (relatief) makkelijk te kraken.  Dus willen we per partij (per zorgaanbieder) een ander pseudoniem voor dezelfde persoon / hetzelfde BSN
 Als twee partijen gegevens aanleveren over dezelfde persoon / hetzelfde BSN, maar met ieder een ander pseudoniem, moeten die twee pseudoniemen ergens gekoppeld kunnen worden. Traditioneel zou hiervoor een trusted third partij worden ingezet, die een tabel bijhoudt op basis waarvan de twee pseudoniemen gekoppeld kunnen worden. Echter, deze koppeltabel is een privacy hotspot en zal goed beveiligd moeten worden. 
 Polymorfe pseudonimisering (voor één persoon verschillende pseudoniemen per databron) is cryptografisch doorontwikkeld, waardoor een dergelijke privacy hotspot vermeden kan worden. De twee pseudoniemen van één persoon bij twee zorgaanbieders worden niet via een tabel gekoppeld, maar zodanig cryptografisch met elkaar verbonden, dat 
-•	ze niet (in een tabel of database) opgeslagen hoeven te worden, maar ter plekke gegenereerd kunnen worden
-•	ze versleuteld kunnen worden zodat alleen de ontvanger er iets mee kan
-•	ook partijen die geen BSN mogen verwerken, mee kunnen doen in de pseudonimisering, zonder het gebruik van BSN   
-De ‘concepten’ 
+* ze niet (in een tabel of database) opgeslagen hoeven te worden, maar ter plekke gegenereerd kunnen worden
+* 	ze versleuteld kunnen worden zodat alleen de ontvanger er iets mee kan
+* 	ook partijen die geen BSN mogen verwerken, mee kunnen doen in de pseudonimisering, zonder het gebruik van BSN   
+
+# De ‘concepten’ 
 •	Een zorgaanbieder maakt voor iedere ingeschreven patiënt een PIP aan (o.b.v. BSN). Als Jan de patiënt/cliënt is, is de PIP van de huisarts van Jan een andere dan de PIP die de apotheek genereerd van Jan.
 •	Met deze PIP kan een PS (polymorf) pseudoniem voor Jan worden aangemaakt door de huisarts en die is anders dan het (polymorf) pseudoniem voor Jan van de apotheek. Uit het PS kan geen BSN worden afgeleid. Dit PS wordt niet gebruikt in de communicatie. Het PS is niet te brute-forcen, want het staat bij de zorgaanbieder in een beveiligde omgeving en is voor één persoon bij iedere zorgaanbieder een ander nummer
 •	Als een zorgaanbieder (bv. de huisarts) wil communiceren met een andere partij die ook het BSN mag gebruiken (bv. een apotheek), dan kan de huisarts het eigen PIP versleutelen naar een VI (versleutelde identiteit) die alleen door de apotheek is te gebruiken. Als de apotheek de VI ontsleuteld heeft, is niet het PIP, en ook niet het PS van de patiënt beschikbaar, maar het BSN! Voorwaarden voor deze decryptie: de apotheek moet hiervoor in het OIN register te boek staan als ‘BSN gerechtigd’ en de apotheek gebruikt voor de decryptie de private sleutel die (eerder) van BSN-K ontvangen is.
